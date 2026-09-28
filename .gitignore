@@ -1,0 +1,20 @@
+# Secrets (anywhere in the repo)
+.env
+.env.*
+!.env.example
+
+# Data pack: database and product images are never committed
+data/
+*.db
+*.db-journal
+*.sqlite
+
+# Dependencies and builds
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+dist/
+
+# Temp files
+output/*.tmp

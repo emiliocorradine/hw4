@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs: App Check</title>
+    <style>
+      :root {
+        --navy: #00356b;
+        --gold: #c9a227;
+        --text: #1a1a1a;
+        --muted: #5b6270;
+        --border: #dfe2e8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--text);
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        line-height: 1.55;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      h1,
+      h2 {
+        font-family: 'Playfair Display', Georgia, serif;
+        color: var(--navy);
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+        margin: 0 0 0.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 3px solid var(--gold);
+      }
+
+      .intro {
+        color: var(--muted);
+        margin: 0 0 2.5rem;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin: 0 0 1rem;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+
+      p.caption {
+        margin: 0.85rem 0 0;
+        color: var(--muted);
+      }
+
+      code {
+        font-family: Consolas, 'Courier New', monospace;
+        font-size: 0.92em;
+        background: #f5f6f8;
+        padding: 0.05rem 0.3rem;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Campus Customs: App Check</h1>
+      <p class="intro">These are screenshots from the running local site (http://localhost:5173 with the FastAPI backend on port 8000).</p>
+
+      <section>
+        <h2>1. Chat checks live inventory</h2>
+        <img src="app_check_images/inventory.png" alt="Chat reply listing Benjamin Franklin 1/4 Zip stock by size, with XL out of stock" />
+        <p class="caption">
+          On the Benjamin Franklin 1/4 Zip page, the agent answered stock by size (XS 2, S 2, M 25, L 20, XXL 2) and
+          said clearly that XL is out of stock. It got this from the database through its tools, not from memory.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Chat search updates the page</h2>
+        <img src="app_check_images/search_cards.png" alt="Hoodie product cards under Assistant results: Hoodies, next to the chat panel" />
+        <p class="caption">
+          Asking "What hoodies do you have?" made matching hoodie cards appear on the page under "Assistant results:
+          Hoodies", with real prices from the database. Each card opens its product detail page.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Usability improvement: in-stock alternatives (Problem 9)</h2>
+        <img src="app_check_images/usability.png" alt="Chat says the Crew Left Chest Hoodie is out of stock in M and shows three similar hoodies in stock in M, also shown on the page" />
+        <p class="caption">
+          When a size is sold out, the agent calls <code>find_alternatives</code> and suggests similar in-stock products
+          as cards. This turns a dead end into a sale. The quick-question chips and the price-accuracy guard are described
+          in <a href="usability.md">usability.md</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Product page stock clarity</h2>
+        <img src="app_check_images/product_stock.png" alt="Yale Uncle Hoodie product page with S and XXL crossed out and a stock-by-size table" />
+        <p class="caption">
+          The product page shows stock by size from the database. Sold-out sizes (S, XXL) are crossed out and can't be
+          selected.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
